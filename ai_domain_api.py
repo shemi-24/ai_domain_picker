@@ -24,6 +24,8 @@ def generate_domains():
         # Get user input (keyword) from request
         data = request.get_json()
         keyword = data.get("keyword", "").strip()
+        description = data.get("description")
+        style = data.get("style")
 
         if not keyword:
             return jsonify({"error": "Keyword is required"}), 400
@@ -33,7 +35,13 @@ def generate_domains():
 
         # Generate Domain Name Ideas
         response = model.generate_content(
-            f"Suggest 10 creative domain name ideas for '{keyword}', including variations with .com, .net, .ai, and unique extensions."
+            f"""
+            I am creating a website about {description}.
+            I want the domain name to sound {style}.
+            It should include the keyword {keyword} if provided.
+            Suggest 25 unique domain names, including variations with .com, .net, .ai, .io, and other creative extensions.
+            Ensure the names are brandable, catchy, and easy to remember.
+            """
         )
 
         # Return JSON response

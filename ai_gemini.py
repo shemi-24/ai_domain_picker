@@ -31,7 +31,7 @@ else:
 
                 # Generate Domain Ideas
                 response = model.generate_content(
-                    f"Suggest 10 creative domain name ideas for '{keyword}', including variations with .com, .net, .ai, and unique extensions."
+                    f"Suggest 25 creative domain name ideas for '{keyword}', including variations with .com, .net, .ai, and unique extensions."
                 )
 
                 # Display Results
